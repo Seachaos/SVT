@@ -35,7 +35,10 @@ export default class App extends Component {
   }
 
   PressButton = () => {
-    this.setState( { speechMode: !this.state.speechMode } );
+    var { speechMode, text }  = this.state
+    text = speechMode ? this.state.text : ': )';
+    speechMode = !speechMode;
+    this.setState( { speechMode, text } );
     if ( !this.state.speechMode ) {
       Voice.start(this.state.lang);
     } else {
